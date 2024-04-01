@@ -31,22 +31,6 @@ export const CountrySelector: React.FC<Props> = ({ onSelect }) => {
     .search(searchTerm)
     .map((result) => result.item);
 
-  const fetchCountryFlag = async () => {
-    // const flag = emoji.get(countryCode.toUpperCase());  // await emoji.get(countryCode.toUpperCase());
-    // return emoji.get("IN"); // flag || '';
-    return emojiCountryCode('IN');
-  };
-
-  const fetchCountryFlags = async () => {
-    const flags: { [key: string]: string } = {};
-    for (const country of countries) {
-      flags[country.cca2] = await fetchCountryFlag(country.cca2);
-    }
-    return flags;
-  };
-
-  useAsync(fetchCountryFlags, []);
-
   return (
     <View style={styles.container}>
       <TextInput
@@ -60,9 +44,7 @@ export const CountrySelector: React.FC<Props> = ({ onSelect }) => {
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => onSelect(item)}>
             <View style={styles.row}>
-              {/* <Text style={{ fontSize: 20 }}>{countryFlags?.[item.cca2]}</Text> */}
               {[item.cca2].map(countryCodeEmoji)}
-              {/* <Text style={{ marginLeft: 10 }}>{  item.name.common }</Text> */}
               <Text style={styles.title}>
                 {item.idd.root +
                   (item.idd.suffixes.length === 1 ? item.idd.suffixes[0] : '') +
