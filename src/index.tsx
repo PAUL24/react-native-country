@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 import countries from 'world-countries';
 import Fuse from 'fuse.js';
-import { useAsync } from 'react-async-hook';
-
-import countryCodeEmoji, { emojiCountryCode } from 'country-code-emoji';
+import countryCodeEmoji from 'country-code-emoji';
 interface Country {
   cca2: string;
   name: {
