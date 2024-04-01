@@ -11,11 +11,24 @@ npm install react-native-country
 ## Usage
 
 ```js
-import { multiply } from 'react-native-country';
+import { CountrySelector } from 'react-native-country';
 
 // ...
 
-const result = await multiply(3, 7);
+  const [selectedCountry, setSelectedCountry] = React.useState(null);
+
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
+  };
+
+    return (
+    <View style={styles.container}>
+      <Text style={{ fontSize: 20, marginBottom: 20 }}>
+        Selected Country: {selectedCountry?.name?.common || 'None'}
+      </Text>
+      <CountrySelector onSelect={handleSelectCountry} />
+    </View>
+  );
 ```
 
 ## Contributing
