@@ -1,18 +1,21 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-country';
+import { CountrySelector } from 'react-native-country';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [selectedCountry, setSelectedCountry] = React.useState(null);
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
+  };
+  //+', ' + selectedCountry?.cca2 ? selectedCountry?.cca2 : ''
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text style={styles.text}>
+        Selected Country: {selectedCountry?.name?.common || 'None'}
+      </Text>
+      <CountrySelector onSelect={handleSelectCountry} />
     </View>
   );
 }
@@ -20,8 +23,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 20,
   },
   box: {
     width: 60,

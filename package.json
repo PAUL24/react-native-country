@@ -155,5 +155,12 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@callstack/react-theme-provider": "^3.0.9",
+    "country-code-emoji": "^2.3.0",
+    "fuse.js": "^7.0.0",
+    "react-async-hook": "^4.0.0",
+    "world-countries": "^5.0.0"
   }
 }
